@@ -1,0 +1,1 @@
+{"status": "ok", "dataFileInfo": {"filename": "561ae9e960d6a7df50c072970c79a5d9.RData", "folder": "C:/Apache/htdocs\\tmp\\a8hvdte00nraa071150tfjamk6", "session_id": "a8hvdte00nraa071150tfjamk6", "outDir_url": "http://146.203.29.123/tmp/a8hvdte00nraa071150tfjamk6"}, "errors": []}

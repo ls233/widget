@@ -1,0 +1,24 @@
+{
+	"default_widget_type":"insilico",
+	"widget_settings":{
+		"insilico":{
+			"views":"lib/client/views/insilico_ui/",
+			"server_scripts":"lib/server/insilico/",
+			"auth_url":"https://insilicodb.org/app/interface/login",
+			"iframeUIsrc":"//insilicodb.org/app/browse?p=GPL570&n=2&mc=1"
+			},
+		"dm":{
+			"views":"lib/client/views/dm_ui",
+			"server_scripts":"lib/server/dm/"
+		}
+	},
+	"outdir" : {
+		"linux" : "/var/www/html/tmp",
+		"win" : "c:\\Apache\\htdocs\\tmp\\",
+		"outdir":"tmp"
+	},
+	"system_settings":{
+		"R":"R"
+	}
+}
+

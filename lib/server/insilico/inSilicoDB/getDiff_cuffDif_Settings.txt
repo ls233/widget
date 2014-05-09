@@ -1,0 +1,1 @@
+{"dataFileInfo": {"filename": "cc1f021143b85845392fba42e2fa7d48.RData", "folder": "C:\\Apache\\htdocs\\widget\\data\\tsrvj89tjk2l8rsjkmb9mvve81", "session_id": "tsrvj89tjk2l8rsjkmb9mvve81"}, "params": {"tol": 0.1, "FDR": 0.01}}

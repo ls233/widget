@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<experiment>
+    <id>6</id>
+    <title>BMH-84-08 avdc generation with various cytokines</title>
+    <author>Boris Hartmann</author>
+    <type>Microarray</type>
+    <date>2005</date>
+    <project>AVDC</project>
+    <master>5 - avdc generation</master>	
+    <description>Available at the Master experiment.</description>  
+    <datafiles>
+        <file href="http://tsb.mssm.edu/primeportal/buildwidget/data/NDV_response_in_DC.txt">NDV_response_in_DC.txt</file>
+    </datafiles>
+    <results>        
+        <section>
+            <notes/>
+            <files>
+                <resultFile href="http://tsb.mssm.edu/primeportal/buildwidget/widget/fileUpload/example/files/updown.png">updown.png</resultFile>
+            </files>
+        </section>
+        <section>
+            <notes>test3</notes>
+            <files>
+                <resultFile href="http://tsb.mssm.edu/primeportal/buildwidget/widget/fileUpload/example/files/Enrichment.heatmap.none.png">Enrichment.heatmap.none.png</resultFile>
+            </files>
+        </section>
+        <section>
+            <notes>desc</notes>
+            <files>
+                <resultFile href="http://tsb.mssm.edu/primeportal/buildwidget/widget/fileUpload/example/files/Enrichment.heatmap.none.png">Enrichment.heatmap.none.png</resultFile>
+            </files>
+        </section>
+        <section>
+            <tool>Tidal</tool>
+            <notes/>
+            <files/>
+        </section>
+    </results>	
+
+</experiment>

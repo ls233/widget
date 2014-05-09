@@ -1,0 +1,55 @@
+	<?xml version="1.0" encoding="UTF-8"?> 
+<experiment>
+    <id>6 (DM ID 213d6001:11ce2ce5c0b:-7f88)</id>
+    <author>Boris Hartmann</author>
+    <type>Gene Microarray</type>
+    <title>BMH-84-08 avdc generation with various cytokines</title>
+    <date>07/02/2008</date>
+    <project>AVDC</project>
+    <master></master>
+    <description>BMH-84-08: AVDC generation with various cytokines.</description>
+    <datafiles>
+        <file href="http://71.188.127.9:22154/webAPI/temp/213d6001:11ce2ce5c0b:-7f88/Set4/PhiladelphiaFlyers2.png" filetype="result">
+            <name>Set4/PhiladelphiaFlyers2.png</name>
+        </file>
+        <file href="http://71.188.127.9:22154/webAPI/temp/213d6001:11ce2ce5c0b:-7f88/Set3/PhiladelphiaEagles.png" filetype="result">
+            <name>Set3/PhiladelphiaEagles.png</name>
+        </file>
+        <file href="http://71.188.127.9:22154/webAPI/temp/213d6001:11ce2ce5c0b:-7f88/PhiladelphiaFlyers.png" filetype="data">
+            <name>PhiladelphiaFlyers.png</name>
+        </file>
+        <file href="http://71.188.127.9:22154/webAPI/temp/213d6001:11ce2ce5c0b:-7f88/NDV_response_in_DC.txt" filetype="data">
+            <name>NDV_response_in_DC.txt</name>
+        </file>
+    </datafiles>
+    <results>
+        <section>
+            <tool>TiDaL</tool>
+            <notes>These are example notes.</notes>
+            <files>
+                <resultFile href="http://71.188.127.9:22153/webAPI/temp/example.txt">file 1</resultFile>
+            </files>
+        </section>
+        <section>
+            <tool></tool>
+            <notes>Append to existing experiment</notes>
+            <files>
+                <resultFile href="http://tsb.mssm.edu/primeportal/widget/widget/fileUpload/example/files//PhiladelphiaFlyers.png]">[PhiladelphiaFlyers.png</resultFile>
+            </files>
+        </section>
+        <section>
+            <tool></tool>
+            <notes>football upload</notes>
+            <files>
+                <resultFile href="http://71.188.127.9:22154/webAPI/temp/213d6001:11ce2ce5c0b:-7f88Set3/PhiladelphiaEagles.png]">[PhiladelphiaEagles.png</resultFile>
+            </files>
+        </section>
+        <section>
+            <tool></tool>
+            <notes>flyers2</notes>
+            <files>
+                <resultFile href="http://71.188.127.9:22154/webAPI/temp/213d6001_11ce2ce5c0b_-7f88/Set4/PhiladelphiaFlyers2.png]">[PhiladelphiaFlyers2.png</resultFile>
+            </files>
+        </section>
+    </results>
+</experiment>

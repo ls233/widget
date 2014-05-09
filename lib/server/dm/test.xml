@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiment>
+    <id>1</id>
+    <title>BMH-84-08 avdc generation with various cytokines</title>
+    <author>Boris Hartmann</author>
+    <type>Flow Cytometry</type>
+    <date>2005</date>
+	<project>AVDC</project>
+	<master>5 - avdc generation</master>	
+    <description>Available at the Master experiment.</description>  
+	<datafiles>
+	    <file>
+			<url>http://146.203.29.217/buildwidget/data/datafile1.txt</url>
+			<name>datafile1.txt</name>
+		</file>
+	    <file>
+			<url>http://146.203.29.217/buildwidget/data/datafile2.txt</url>
+			<name>datafile2.txt</name>
+		</file>
+	<file href="attr_value">bar</file></datafiles>
+</experiment>

@@ -1,0 +1,6 @@
+Data Import web-widget is a web application that will enables bioinformatics data analysis tool builders to provide web visitors with direct access to data stored in remote databases. Data Import widget is a stand-alone web application that can be embedded into tool builder’s sites and therefore requires minimal or no changes to their website. PRiME web-widget is executed by a visitor within a tool-builder web page, and allows to connect to the supported data repositories (supporting RESTful API). The connected data sources then can directly be used as an input for the tool hosted on the webpage where the widget was launched. As data processing is finished, the widget will allow to submit the analysis results directly to the user’s personal record. The latter is possible if the user’s electronic notebook resides on a supported system.
+
+Data Import widget functionality has been implemented and successfully tested against LIMS used in the PRiME group - http://tsb.mssm.edu/primeportal/. 
+Data Import widget was integrated in the TIDAL gene expression analysis tool for which it provides the means to directly transfers gene expression datasets from the Insilico database - https://insilicodb.com/. 
+
+Data Import widget is under active development and new data sources are being added.

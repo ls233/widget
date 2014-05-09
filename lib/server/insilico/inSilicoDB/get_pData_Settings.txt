@@ -1,0 +1,1 @@
+{"status": "ok", "dataFileInfo": {"filename": "013970bb4951c659baf616b256e235a0.RData", "folder": "/var/www/html/tmp/ae1qmmpqf0nf1v34sotmm8c0q0", "session_id": "ae1qmmpqf0nf1v34sotmm8c0q0", "outDir_url": "https://slapp04.mssm.edu/tmp/ae1qmmpqf0nf1v34sotmm8c0q0"}, "errors": []}

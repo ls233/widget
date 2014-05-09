@@ -1,0 +1,1 @@
+{"filename": "3dc0ab489a86ecca7c5035bcafe399a1.RData", "folder": "C:\\Apache\\htdocs\\widget\\data\\fh6osf4gtt21p313gsrkhnbm56", "session_id": "fh6osf4gtt21p313gsrkhnbm56"}
