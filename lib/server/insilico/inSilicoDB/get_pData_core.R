@@ -3,7 +3,7 @@
 #  @author German Nudelman
 #  @usage: R --vanilla --quiet --slave --args input.json output.json < script.R
 #
-#  This file extructs meta data from Bioconductor eSet
+#  This file extructs meta data from Bioconductor eSet and matches the taxon using entrez eutilis
 # 
 
 
@@ -18,6 +18,7 @@ library(rjson)
 library(affy)
 #library(Biobase)
 library(preprocessCore)
+library(rentrez)
 
 if(.DEBUG){
   setwd("c:/Apache/htdocs/widget/lib/server/insilico/")  
@@ -45,6 +46,17 @@ if(.jsonfile){ #input sent via file
 output<-list()
 output$input<-input
 output$status<-"failure"
+
+detectTaxon<-function(gse.id){
+  query <- paste(gse.id,"[ACCN]+GSE[ETYP]",sep='')
+  web_env_search <- entrez_search(db="gds", query, usehistory="y")
+  if( length(web_env_search$ids) != 1)
+    return(NA)
+  cookie <- web_env_search$WebEnv
+  qk <- web_env_search$QueryKey
+  pop_summ <- entrez_summary(db="gds", query_key=1, WebEnv=cookie)
+  taxon<-pop_summ[["taxon"]]
+}
 
 processinput<-function(input){
   
@@ -97,6 +109,15 @@ eSet <- load_obj(ifile)
 
 experimentData <- experimentData(eSet)    
 expinfo <- expinfo(experimentData)
+
+gse.id <- experimentData@name
+try.detectTaxon <- try(detectTaxon(gse.id))
+if(class(try.detectTaxon)=="try-error"){
+  taxon<-NA
+}else{
+  taxon <- try.detectTaxon
+}
+
 
 pdata <- pData(eSet)
 exprs <- exprs(eSet)
@@ -170,6 +191,7 @@ output$densData <- densData
 dataFileInfo<-list()
 dataFileInfo<-input$dataFileInfo
 output$dataFileInfo <- dataFileInfo
+output$taxon <- taxon
 
 output<-list(output=output)
 outputstr<-toJSON(output)

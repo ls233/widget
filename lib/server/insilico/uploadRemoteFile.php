@@ -8,15 +8,12 @@
 session_start();
 $debug = 1; 
 
-$ret = array('status' => 'failed');
-
 if($debug){
   //setup reporting problems to browsers
   try {
     require_once('browser_reporting.php');  
   } catch (Exception $e) {
-    $ret['msg'] = $e->getMessage();
-    die(isset($_GET['callback']) ? "{$_GET['callback']}($ret)" : $ret);
+    // report $e->getMessage()
   }
 }
 
@@ -62,7 +59,7 @@ $errors = array();
 if (!empty($_GET['url'])) {
     $remoteFile = $_GET['url'];
     $targetPath = getTargetPath() ;
-    if($debug){ /* $firephp->log($targetPath, '$targetPath'); */ }   
+    if($debug){ /* $firephp->log($targetPath, '$targetPath'); */}   
     //  $targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
     if (!file_exists($targetPath)) { // make the directory if it doesn't exist      
       mkdir(str_replace('//', '/', $targetPath), 0777, true);

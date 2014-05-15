@@ -72,7 +72,7 @@ if (!empty($_FILES)) { //upload via input type = file
 
     if(is_uploaded_file($tmp)) {
       $targetPath = getTargetPath() ;
-      if($debug){ $firephp->log($targetPath, '$targetPath');}   
+      if($debug){ /* $firephp->log($targetPath, '$targetPath'); */ }   
       //  $targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
       if (!file_exists($targetPath)) { // make the directory if it doesn't exist      
         mkdir(str_replace('//', '/', $targetPath), 0777, true);

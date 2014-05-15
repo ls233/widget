@@ -1,21 +1,19 @@
 library(gplots)
 library(rjson)
+library(rentrez)
 
 #TRUE#FALSE
-.jsonfile<-TRUE
-.DEBUG<-FALSE
+.jsonfile<-T
+.DEBUG<-F
 logmsg<-""
 pngfile<-""
 
-#cat(paste("got here\n"),file=stderr())
-
 if(.DEBUG){
-  args<-c("heatmapSettings_DEBUG.txt")
-  setwd("./inSilicoDB/")  
-}else{
-  args<-c("makeTidalInputSettings.txt")
-  setwd("./inSilicoDB/")  
+  setwd("c:/Apache/htdocs/widget/lib/server/insilico/")  
 }
+setwd("./inSilicoDB/")  
+args<-c("makeTidalInputSettings.txt")
+
 #print(args)
 
 if(.jsonfile){
@@ -76,11 +74,37 @@ tidalInputPath<-file.path(idir,tidalInputFile)
 
 
 #### appending the refseqs to the FC matrix ###############################################
-library(org.Hs.eg.db)
+taxon<-input$taxon
+if(taxon=="NA"){
+  output$message<-"Taxon info does not exist"
+  return(output)
+}
+
+# if(taxon=="Homo sapiens"){
+#   taxon<-"Human"
+# }
+# if(taxon=="Mus musculus"){
+#   taxon<-"Mouse"
+# }
+
+print (paste("Obtaining annotation for", taxon))
+switch(taxon, 
+       Human={
+         library(org.Hs.eg.db)         
+         lib<-'Hs'
+       },
+       Mouse={
+         library(org.Mm.eg.db)
+         lib<-'Mm'
+       }
+)
+
 library(AnnotationFuncs)
 
 genesNames<-rownames(results.total)
-symbol2refseqs<-translate(genesNames, from=org.Hs.egSYMBOL2EG, to=org.Hs.egREFSEQ)
+from <- eval(parse(text=paste('org.', lib, '.egSYMBOL2EG', sep = "")))
+to <- eval(parse(text=paste('org.', lib, '.egREFSEQ', sep = "")))
+symbol2refseqs<-translate(genesNames, from=from, to=to)
 mRNA <- pickRefSeq(symbol2refseqs, priorities=c("NM","XM"))
 
 e.tmp<-results.total
