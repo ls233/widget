@@ -9,7 +9,7 @@
 
 # reading parameters -------------------------------------------------------
 .jsonfile<-TRUE
-.DEBUG<-FALSE
+.DEBUG<-FALSE #FALSE
 logmsg<-""
 pngfile<-""
 input<-""

@@ -3,13 +3,13 @@ library(rjson)
 library(rentrez)
 
 #TRUE#FALSE
-.jsonfile<-T
-.DEBUG<-F
+.jsonfile<-TRUE
+.DEBUG<-FALSE #FALSE
 logmsg<-""
 pngfile<-""
 
 if(.DEBUG){
-  setwd("c:/Apache/htdocs/widget/lib/server/insilico/")  
+  setwd("c:/Apache/htdocs/widgetdev/lib/server/insilico/")  
 }
 setwd("./inSilicoDB/")  
 args<-c("makeTidalInputSettings.txt")
@@ -68,6 +68,7 @@ load_obj <- function(f) {
 }
 
 results.total <- load_obj(ifile)
+genesNames<-rownames(results.total)
 
 tidalInputFile<- paste(input$filename, "__tidalInputU.txt", sep="")
 tidalInputPath<-file.path(idir,tidalInputFile)
@@ -75,19 +76,33 @@ tidalInputPath<-file.path(idir,tidalInputFile)
 
 #### appending the refseqs to the FC matrix ###############################################
 taxon<-input$taxon
-if(taxon=="NA"){
+if(taxon=="null"){
   output$message<-"Taxon info does not exist"
   return(output)
 }
 
-# if(taxon=="Homo sapiens"){
-#   taxon<-"Human"
-# }
-# if(taxon=="Mus musculus"){
-#   taxon<-"Mouse"
-# }
 
-print (paste("Obtaining annotation for", taxon))
+# detectTaxon <- function() {
+#   print ("detecting taxon")
+#   library(org.Hs.eg.db)       
+#   library(org.Mm.eg.db)
+#   taxon<-"null"
+#   taxons <- c("Hs","Mm")
+#   #lib <- taxons[1]
+#   for (lib in taxons){
+#     from <- eval(parse(text=paste('org.', lib, '.egSYMBOL2EG', sep = "")))
+#     to <- eval(parse(text=paste('org.', lib, '.egREFSEQ', sep = "")))
+#     symbol2refseqs<-translate(genesNames, from=from, to=to)
+#     mRNA <- pickRefSeq(symbol2refseqs, priorities=c("NM","XM"))    
+#     if(length(mRNA) > 1000) {
+#       taxon<-lib
+#       break      
+#     }
+#   }
+#   taxon
+# }
+# 
+lib <- 'null'
 switch(taxon, 
        Human={
          library(org.Hs.eg.db)         
@@ -97,15 +112,32 @@ switch(taxon,
          library(org.Mm.eg.db)
          lib<-'Mm'
        }
+#        ,
+#        null={
+#          lib<-detectTaxon()
+#        }
 )
+# 
+if(lib == 'null'){
+  output$message<-"taxon is not set"  
+  output<-list(output=output)
+  outputstr<-toJSON(output)
+  write(outputstr,"")
+  quit()
+  return(output)
+}
+
 
 library(AnnotationFuncs)
 
-genesNames<-rownames(results.total)
 from <- eval(parse(text=paste('org.', lib, '.egSYMBOL2EG', sep = "")))
 to <- eval(parse(text=paste('org.', lib, '.egREFSEQ', sep = "")))
 symbol2refseqs<-translate(genesNames, from=from, to=to)
 mRNA <- pickRefSeq(symbol2refseqs, priorities=c("NM","XM"))
+if(length(mRNA) < 1000) {
+  output$message<-"Couldn't annotate data with RefSeq IDs"
+  return(output)
+}
 
 e.tmp<-results.total
 #e.tmp1 <- e.tmp[1:5,]

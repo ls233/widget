@@ -620,6 +620,11 @@ button.back{
     font-size: 14px;
 }
 
+.radioBtnHolderTaxon{
+    margin: 20px auto 0;
+    width: 20%;
+}
+
 .info span.ui-button-text{
     font-size: 12px;
 }
